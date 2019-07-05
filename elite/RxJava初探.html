@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://mirindalover.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="https://mirindalover.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="https://mirindalover.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="https://mirindalover.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://mirindalover.github.io">
+<meta name="author" content="mirindalover">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>rxjava初探 - mirindalover的博客</title>
+
+<meta name="google-site-verification" content="dF_kzuOj4Qqht792K_d6zmAYsqHTaVfx6nbiPYBD79c">
+<meta name="baidu-site-verification" content="YAqN9fgKsn">
+<meta name="keywords" content>
+
+<meta name="description " content="还是有个自己的博客好">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+    
+
+    
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="生活">生活</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">爱生活</h1>
+        <h3 class="cover-siteTitle">认真对待每一行代码</h3>
+        <p class="cover-siteDesc">一个关于Android和Java的IT博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://github.com/mirindalover" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href="https://github.com/mirindalover" target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href="https://github.com/mirindalover" target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/mirindalover" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/elite" data-name="精华">精华</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/basics" data-name="基础">基础</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/notes" data-name="随笔">随笔</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="杂乱">杂乱</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="读物检索~">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://mirindalover.github.io/" target="_blank">
+                    <img width="48" src="/images/favicon.png" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://mirindalover.github.io/" target="_blank">砖头</a>
+                    <span title="最后编辑于&nbsp;2019-07-05">2019-07-05</span>
+                </p>
+                <p>一个搬砖的</p>
+            </div>
+            <h2 class="post-title">RxJava初探</h2>
+            <div class="post-meta">
+                本文共计9913个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文使用RxJava2.x，仅作为入门笔记，后续持续更新。本文所有代码使用junit测试可直接运行</p>
+<ul>
+<li>友情链接<br><a href="http://reactivex.io/documentation/operators.html" target="_blank" rel="noopener">官网操作符</a><br><a href="https://www.jianshu.com/p/464fa025229e" target="_blank" rel="noopener">入门博客</a></li>
+</ul>
+<p>集成</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//RxJava+RxAndroid</span></span><br><span class="line">implementation <span class="string">"io.reactivex.rxjava2:rxjava:2.2.10"</span></span><br><span class="line">implementation <span class="string">'io.reactivex.rxjava2:rxandroid:2.1.1'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>RxJava2.x有2种观察模式:</p>
+<ol>
+<li>Observable-&gt;Observer不支持背压</li>
+<li>Flowable-&gt;Subscriber支持背压</li>
+</ol>
+<p>被观察者也叫做上游,下游即为观察者<br>被观察者可以想象成通过流的形式发送数据</p>
+<h4 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;String&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            emitter.onNext(<span class="string">"1"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"2"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"3"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"4"</span>);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">            emitter.onNext(<span class="string">"5"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).subscribe(<span class="keyword">new</span> Observer&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Disposable d)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"onComplete"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里用的是Observer，如果我们只关心onNext事件,可以使用Consumer来替换Observer</p>
+<ol>
+<li>emitter用来发送流</li>
+<li>Disposable 可以切断上游和下游的联系,<strong>但是上游还会发送事件</strong><h4 id="线程切换"><a href="#线程切换" class="headerlink" title="线程切换"></a>线程切换</h4></li>
+<li>subscribeOn()指定上游发送事件的线程(多次指定，只有第一次有效)</li>
+<li>observeOn()下游接受事件的线程(可以多次切换,与doOnNext对应)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">threadChange</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;String&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            emitter.onNext(<span class="string">"1"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"2"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"3"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"4"</span>);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">            emitter.onNext(<span class="string">"5"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).subscribeOn(Schedulers.io())</span><br><span class="line">            .observeOn(Schedulers.io())</span><br><span class="line">            .doOnNext(<span class="keyword">new</span> Consumer&lt;String&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">"doOnNext: Thread = "</span> + Thread.currentThread() + <span class="string">"value ="</span> + s);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .observeOn(Schedulers.newThread())</span><br><span class="line">            .subscribe(<span class="keyword">new</span> Consumer&lt;String&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">"subscribe: Thread = "</span> + Thread.currentThread() + <span class="string">"value ="</span> + s);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="流的转化"><a href="#流的转化" class="headerlink" title="流的转化"></a>流的转化</h4><ol>
+<li>map-对每个流操作后继续流出(改变每个流的输入继续当输入。可改变输入的类型和值)</li>
+<li>flatMap-对每个流可进行转换,转换为新的Observable(根据输入重新开始流，不保证顺序)</li>
+<li>concatMap-与flatMap类似,保证顺序<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mapTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;String&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">             emitter.onNext(<span class="string">"1"</span>);</span><br><span class="line">             emitter.onNext(<span class="string">"2"</span>);</span><br><span class="line">             emitter.onNext(<span class="string">"3"</span>);</span><br><span class="line">             emitter.onNext(<span class="string">"4"</span>);             </span><br><span class="line">             emitter.onComplete();</span><br><span class="line">             emitter.onNext(<span class="string">"5"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;).map(<span class="keyword">new</span> Function&lt;String, String&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> String <span class="title">apply</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">             <span class="keyword">return</span> s + <span class="string">"+map"</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;).flatMap(<span class="keyword">new</span> Function&lt;String, ObservableSource&lt;String&gt;&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> ObservableSource&lt;String&gt; <span class="title">apply</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">             <span class="keyword">return</span> Observable.just(s + <span class="string">"+flatMap"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;).subscribe(<span class="keyword">new</span> Consumer&lt;String&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">             System.out.println(<span class="string">"subscribe: Thread = "</span> + Thread.currentThread() + <span class="string">"value ="</span> + s);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="流的组合"><a href="#流的组合" class="headerlink" title="流的组合"></a>流的组合</h4><ul>
+<li>zip-将2个流组合起来<blockquote>
+<p>必须拿到2个流才能组合，所以下游收到的流次数即为发送最少的上游的次数</p>
+<p>一个流结束,整个过程结束同时上游也会结束</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">zipTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Observable.zip(Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;String&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            emitter.onNext(<span class="string">"1"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"2"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"3"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"4"</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"5"</span>);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">            emitter.onNext(<span class="string">"6"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).subscribeOn(Schedulers.io()), Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;String&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            emitter.onNext(<span class="string">"A"</span>);</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"B"</span>);</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"C"</span>);</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"D"</span>);</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            emitter.onNext(<span class="string">"E"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;), <span class="keyword">new</span> BiFunction&lt;String, String, String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">apply</span><span class="params">(String s, String s2)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> s + <span class="string">"-"</span> + s2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).subscribe(<span class="keyword">new</span> Observer&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Disposable d)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"onComplete"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="流的过滤"><a href="#流的过滤" class="headerlink" title="流的过滤"></a>流的过滤</h4><p>我们可以根据条件过滤掉上游的数据,这样上游相当于会丢失一部分数据</p>
+<ul>
+<li>filter-对流进行过滤，满足条件可通过(可减少下游压力)</li>
+<li>sample-周期的去取<strong>最近</strong>的一次(如果想取周期的第一次可以使用throttleFirst)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Test</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">filterTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;Integer&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">                 emitter.onNext(i);</span><br><span class="line">                 Thread.sleep(<span class="number">10</span>);</span><br><span class="line">             &#125;</span><br><span class="line">             emitter.onComplete();</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;).filter(<span class="keyword">new</span> Predicate&lt;Integer&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">test</span><span class="params">(Integer integer)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">             <span class="keyword">return</span> integer % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;)</span><br><span class="line"><span class="comment">//                .throttleFirst(50,TimeUnit.MILLISECONDS)</span></span><br><span class="line">             .sample(<span class="number">50</span>, TimeUnit.MILLISECONDS)</span><br><span class="line">             .observeOn(Schedulers.io())</span><br><span class="line">             .subscribeOn(Schedulers.io())</span><br><span class="line">             .subscribe(<span class="keyword">new</span> Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Integer integer)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                     System.out.println(integer);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;);</span><br><span class="line"></span><br><span class="line">     <span class="keyword">try</span> &#123;</span><br><span class="line">         Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">     &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Flowable"><a href="#Flowable" class="headerlink" title="Flowable"></a>Flowable</h4><p>另一种观察模式是使用Flowable,同时他支持背压。建议只在需要的时候使用,其他情况还是使用Observable<br>先来看例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backPressureTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Flowable.create(<span class="keyword">new</span> FlowableOnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(FlowableEmitter&lt;String&gt; emitter)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"><span class="comment">//                System.out.println(Thread.currentThread());</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">128</span>; i++) &#123;</span><br><span class="line"><span class="comment">//                    if (emitter.requested() &gt; 0) &#123;</span></span><br><span class="line">                emitter.onNext(String.valueOf(i));</span><br><span class="line"><span class="comment">//                    &#125;</span></span><br><span class="line">            &#125;</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">            .subscribeOn(Schedulers.io())</span><br><span class="line"><span class="comment">//                .observeOn(Schedulers.io())</span></span><br><span class="line">            .subscribe(<span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Subscription s)</span> </span>&#123;</span><br><span class="line"><span class="comment">//                        System.out.println(Thread.currentThread());</span></span><br><span class="line">                    s.request(<span class="number">90</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">                    System.out.println(s);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable t)</span> </span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">"error"</span> + t);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">"onComplete"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用Subscriber来订阅。也可以使用Consumer(但这样其实与用Observable没有什么区别)</li>
+<li>与Observable不同的是:<ol>
+<li>上游可以知道下游的处理能力,来做出相应的策略(FlowableEmitter.requested()即为下游可处理的事件)</li>
+<li>上游的流可以存放起来等待下游处理(由bufferSize控制存放的最大量)</li>
+</ol>
+</li>
+<li>其实我们使用的时候关心的核心就是2个：下游的处理能力、上游的缓存最大数量</li>
+</ul>
+<ol>
+<li>默认下游的处理能力为0</li>
+<li>增加下游处理能力：使用Subscription .request()来增加</li>
+<li>减少下游处理能力：当上游发送流即emitter.onNext()时</li>
+<li>上游的缓存默认为0</li>
+<li>当上游无法缓存时,会走背压策略即BackpressureStrategy即create时的第二个参数</li>
+<li>可以通过observeOn指定缓存最大数量,调用但是不指定内部会有默认值128</li>
+</ol>
+<ul>
+<li>Subscription和FlowableEmitter<br>这里贴出一个结论(如何得到的结论，以后会进行源码分析)</li>
+</ul>
+<ol>
+<li>当不切换线程或者只指定上游的线程即subscribeOn时。Subscription和FlowableEmitter是同一个对象<blockquote>
+<p>我们Subscription.request()设置后上游的FlowableEmitter.requested()会立马改变</p>
+</blockquote>
+</li>
+<li>当上游和下游都指定了线程。Subscription和FlowableEmitter是不同的对象，这里就涉及到下游的处理能力同步给上游的问题<blockquote>
+<p>开始上游FlowableEmitter的requested()为128<br>下游Subscription,request()96以后，上游的FlowableEmitter会更新到128<br>即不是实时同步的</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="后续问题"><a href="#后续问题" class="headerlink" title="后续问题"></a>后续问题</h4><p>关于背压的后续分析问题：</p>
+<ol>
+<li>Subscription和FlowableEmitter分别是什么时候赋值的</li>
+<li>不同线程的时候Subscription和FlowableEmitter如何同步</li>
+</ol>
+
+            
+                
+
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/Android/">Android</a>
+            
+            <a href="/tags/RxJava/">RxJava</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助">帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://mirindalover.github.io/" target="_blank" rel="friend">砖头</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="请输入查询关键词">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '06/17/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+</script>
+</body>
+</html>
